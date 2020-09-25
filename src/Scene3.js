@@ -108,9 +108,7 @@ function Mirrors({ envMap }) {
 
 export default function Scene() {
   const group = useSlerp()
-  const [cubeCamera, renderTarget] = useRenderTarget({
-    minFilter: undefined
-  }) 
+  const [cubeCamera, renderTarget] = useRenderTarget() 
 
   return (
     <>

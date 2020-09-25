@@ -6,7 +6,6 @@ function useRenderTarget(settings = {}) {
   const renderTargetSettings = { 
     format: THREE.RGBAFormat, 
     generateMipmaps: true, 
-    minFilter: THREE.LinearMipmapLinearFilter
  }
   
     const renderTarget = useMemo(() => 
