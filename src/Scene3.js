@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import { useFrame, useResource } from 'react-three-fiber'
+import { useResource } from 'react-three-fiber'
 import { Text, Box, Octahedron, Plane, PerspectiveCamera } from 'drei'
 import { Physics, useBox, usePlane } from 'use-cannon'
 

@@ -3,19 +3,17 @@ import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 
 function useRenderTarget(settings = {}) {
-  const renderTargetSettings = {
-    format: THREE.RGBAFormat,
-    generateMipmaps: true
-  }
+  const renderTarget = useMemo(() => {
+    const renderTargetSettings = {
+      format: THREE.RGBAFormat,
+      generateMipmaps: true
+    }
 
-  const renderTarget = useMemo(
-    () =>
-      new THREE.WebGLCubeRenderTarget(1024, {
-        ...renderTargetSettings,
-        ...settings
-      }),
-    []
-  )
+    return new THREE.WebGLCubeRenderTarget(1024, {
+      ...renderTargetSettings,
+      ...settings
+    })
+  }, [settings])
 
   const cubeCamera = useRef()
 
