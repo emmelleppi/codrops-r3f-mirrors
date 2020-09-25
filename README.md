@@ -38,6 +38,7 @@ yarn build
 ## Misc
 
 Follow Marco Ludovico Perego: [Twitter](https://twitter.com/mlperego), [GitHub](https://github.com/emmelleppi)
+
 Follow Gianmarco Simone: [Twitter](https://twitter.com/ggsimm), [GitHub](https://github.com/gsimone)
 
 Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
