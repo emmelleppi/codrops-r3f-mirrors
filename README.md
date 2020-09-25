@@ -1,15 +1,9 @@
-_How to use this template:_
+# Creating mirrors in react-three-fiber & threejs
 
-- The general styles for the demo page are in css/base.css
-- The README.md can be used to add credits of resources used
-- For writing the tutorial, take a look at https://github.com/crnacura/CodropsTemplate/wiki/Writing-the-article
-- Delete this 'how to' in the final version and leave the following (fill in title/description, credits and social links, we'll do the rest):
+A short tutorial on how to create a mirrors scene with the react-three-fiber ecosystem.
+By Marco Ludovico Perego and Gianmarco Simone
 
-# The Title
-
-_Description_, _author_
-
-![Image Title](link)
+![Featured Image](https://raw.githubusercontent.com/emmelleppi/codrops-r3f-mirrors/master/screenshot.jpg?token=AJPLCL3W7TL7OUYZ2VKKL4S7NVAUC)
 
 [Article on Codrops](https://tympanus.net/codrops/?p=)
 
@@ -20,28 +14,31 @@ _Description_, _author_
 Install dependencies:
 
 ```
-npm install
+yarn
 ```
 
 Compile the code for development and start a local server:
 
 ```
-npm start
+yarn start
 ```
 
 Create the build:
 
 ```
-npm run build
+yarn build
 ```
 
 ## Credits
 
-_third party resources_
+- [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
+- [three.js](https://threejs.org/)
+- [React](https://reactjs.org/)
 
 ## Misc
 
-Follow _Author_: [Twitter](), [Dribbble](), [Google+](), [GitHub]()
+Follow Marco Ludovico Perego: [Twitter](https://twitter.com/mlperego), [GitHub](https://github.com/emmelleppi)
+Follow Gianmarco Simone: [Twitter](https://twitter.com/ggsimm), [GitHub](https://github.com/gsimone)
 
 Follow Codrops: [Twitter](http://www.twitter.com/codrops), [Facebook](http://www.facebook.com/codrops), [GitHub](https://github.com/codrops), [Instagram](https://www.instagram.com/codropsss/)
 
