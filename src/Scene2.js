@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useMemo } from 'react'
 import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 import { Text, useMatcapTexture, Octahedron, useGLTFLoader, PerspectiveCamera } from 'drei'
@@ -13,6 +13,7 @@ const TEXT_PROPS = {
 }
 
 function Title({ material, texture, map, ...props }) {
+  
   return (
     <group {...props}>
       <Text name="text-olga" depthTest={false} position={[0, -1, 0]} {...TEXT_PROPS}>
@@ -26,7 +27,10 @@ function Title({ material, texture, map, ...props }) {
 function Diamond({ map, texture, matcap, ...props }) {
   const ref = useRef()
 
-  useFrame(() => void ((ref.current.rotation.y += 0.001), (ref.current.rotation.z += 0.01)))
+  useFrame(() => {
+    ref.current.rotation.y += 0.001
+    ref.current.rotation.z += 0.01
+  })
 
   return (
     <mesh ref={ref} {...props}>
@@ -38,18 +42,19 @@ function Diamond({ map, texture, matcap, ...props }) {
 function Diamonds(props) {
   const [matcapTexture] = useMatcapTexture('2E763A_78A0B7_B3D1CF_14F209')
   const { nodes } = useGLTFLoader('/diamond.glb')
+
   return (
     <group name="diamonds" {...props}>
       {diamondsData.mirrors.map((mirror, index) => (
-        <Diamond key={`0${index}`} name={`diamond-${index}`} {...mirror} geometry={nodes.Cylinder.geometry} matcap={matcapTexture} scale={[0.5, 0.5, 0.5]} />
+        <Diamond key={`diamond-${index}`} name={`diamond-${index}`} {...mirror} geometry={nodes.Cylinder.geometry} matcap={matcapTexture} scale={[0.5, 0.5, 0.5]} />
       ))}
     </group>
   )
 }
 
 function Scene() {
-  const [renderTarget] = useState(new THREE.WebGLCubeRenderTarget(1024, { format: THREE.RGBAFormat, generateMipmaps: true, minFilter: THREE.LinearFilter }))
-  const [thinFilmFresnelMap] = useState(new ThinFilmFresnelMap(410, 0, 5, 1024))
+  const renderTarget = useMemo(() => new THREE.WebGLCubeRenderTarget(1024, { format: THREE.RGBAFormat, generateMipmaps: true, minFilter: THREE.LinearFilter }), [])
+  const thinFilmFresnelMap = useMemo(() => new ThinFilmFresnelMap(410, 0, 5, 1024), [])
 
   const cubeCamera = useRef()
   const text = useRef()
@@ -58,21 +63,21 @@ function Scene() {
   const [matcapTexture] = useMatcapTexture('BA5DBA_F2BEF2_E69BE6_DC8CDC')
 
   useFrame(({ gl, scene }) => {
-    if (!cubeCamera.current) return
-    text.current.visible = false
     cubeCamera.current.update(gl, scene)
-    text.current.visible = true
   })
 
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 2]} fov={70} />
-      <group name="sceneContainer" ref={group}>
-        <Octahedron name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
+
+      <Octahedron name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
           <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} />
         </Octahedron>
         <cubeCamera name="cubeCamera" ref={cubeCamera} args={[0.1, 100, renderTarget]} position={[0, 0, -12]} />
+      
+      <group name="sceneContainer" ref={group}>
         <Diamonds />
+        
         <group ref={text} name="text" position={[0, 0, -5]}>
           <Title name="title" texture={renderTarget.texture} map={thinFilmFresnelMap} />
         </group>

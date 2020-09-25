@@ -32,8 +32,8 @@ function Html() {
             <p className="frame__tagline">A react-three-fiber based demo</p>
           </div>
           <div className="frame__links">
-            <a href="">Previous demo</a>
-            <a href="">Article</a>
+            <a href="#">Previous demo</a>
+            <a href="#">Article</a>
             <a href="https://github.com/emmelleppi/codrops-r3f-mirrors">GitHub</a>
           </div>
           <div className="frame__demos">

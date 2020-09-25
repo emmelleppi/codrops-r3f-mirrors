@@ -13,9 +13,13 @@ const textProps = {
 
 const COLOR = '#f51d63'
 
-function Title({ layers = undefined, label = '', color, ...props }) {
+function Title({ layers, label = '', color, ...props }) {
   const group = useRef()
-  useEffect(() => void group.current.lookAt(0, 0, 0), [])
+  
+  useEffect(() => {
+    group.current.lookAt(0, 0, 0)
+  }, [])
+
   return (
     <group {...props} ref={group}>
       <Text castShadow name={label} depthTest={false} material-toneMapped={false} {...textProps} layers={layers}>
@@ -31,6 +35,7 @@ function TitleCopies({ layers, label, ...props }) {
     const y = new THREE.CircleGeometry(10, 4, 4)
     return y.vertices
   }, [])
+  
   return (
     <group name="titleCopies" {...props}>
       {vertices.map((vertex, i) => (
@@ -40,9 +45,12 @@ function TitleCopies({ layers, label, ...props }) {
   )
 }
 
-function PhyPlane(props) {
+function PhysicalWalls(props) {
   usePlane(() => ({ ...props }))
-  usePlane(() => ({ position: [0, 0, -15] }))
+
+  // back wall
+  usePlane(() => ({ position: [0, 0, -20] }))
+  
   return (
     <Plane args={[1000, 1000]} {...props} receiveShadow>
       <shadowMaterial transparent opacity={0.2} />
@@ -110,7 +118,7 @@ export default function Scene() {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+      <PerspectiveCamera makeDefault position={[0, 2, 10]} />
 
       <group name="sceneContainer" ref={group}>
         <Octahedron layers={[11]} name="background" args={[100]} position={[0, 0, -5]}>
@@ -128,7 +136,7 @@ export default function Scene() {
 
         <Physics gravity={[0, -10, 0]}>
           <Mirrors envMap={renderTarget.texture} />
-          <PhyPlane rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} />
+          <PhysicalWalls rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} />
         </Physics>
       </group>
 
