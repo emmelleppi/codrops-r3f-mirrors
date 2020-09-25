@@ -16,7 +16,7 @@ const COLOR = '#f51d63'
 
 function Title({ layers, label = '', color, ...props }) {
   const group = useRef()
-  
+
   useEffect(() => {
     group.current.lookAt(0, 0, 0)
   }, [])
@@ -36,7 +36,7 @@ function TitleCopies({ layers, label, ...props }) {
     const y = new THREE.CircleGeometry(10, 4, 4)
     return y.vertices
   }, [])
-  
+
   return (
     <group name="titleCopies" {...props}>
       {vertices.map((vertex, i) => (
@@ -51,7 +51,7 @@ function PhysicalWalls(props) {
 
   // back wall
   usePlane(() => ({ position: [0, 0, -20] }))
-  
+
   return (
     <Plane args={[1000, 1000]} {...props} receiveShadow>
       <shadowMaterial transparent opacity={0.2} />
@@ -88,7 +88,11 @@ function Mirrors({ envMap }) {
         mass: 1,
         material: { friction: 1, restitution: 0 },
         args: [BOX_SIZE, BOX_SIZE, BOX_SIZE],
-        position: [-COLS + ((index * BOX_SIZE) % (BOX_SIZE * COLS)), -1 + BOX_SIZE * Math.floor((index * BOX_SIZE) / (BOX_SIZE * COLS)), 0]
+        position: [
+          -COLS + ((index * BOX_SIZE) % (BOX_SIZE * COLS)),
+          -1 + BOX_SIZE * Math.floor((index * BOX_SIZE) / (BOX_SIZE * COLS)),
+          0
+        ]
       })),
     []
   )
@@ -99,7 +103,13 @@ function Mirrors({ envMap }) {
       <meshPhysicalMaterial ref={reflectionMaterial} envMap={envMap} roughness={0} metalness={1} />
       <group name="mirrors">
         {mirrorsData.map((mirror, index) => (
-          <Mirror key={`0${index}`} name={`mirror-${index}`} {...mirror} sideMaterial={sideMaterial.current} reflectionMaterial={reflectionMaterial.current} />
+          <Mirror
+            key={`0${index}`}
+            name={`mirror-${index}`}
+            {...mirror}
+            sideMaterial={sideMaterial.current}
+            reflectionMaterial={reflectionMaterial.current}
+          />
         ))}
       </group>
     </>
@@ -108,7 +118,7 @@ function Mirrors({ envMap }) {
 
 export default function Scene() {
   const group = useSlerp()
-  const [cubeCamera, renderTarget] = useRenderTarget() 
+  const [cubeCamera, renderTarget] = useRenderTarget()
 
   return (
     <>
@@ -122,7 +132,13 @@ export default function Scene() {
           <meshBasicMaterial color={COLOR} side={THREE.BackSide} />
         </Octahedron>
 
-        <cubeCamera layers={[11]} name="cubeCamera" ref={cubeCamera} position={[0, 0, 0]} args={[0.1, 100, renderTarget]} />
+        <cubeCamera
+          layers={[11]}
+          name="cubeCamera"
+          ref={cubeCamera}
+          position={[0, 0, 0]}
+          args={[0.1, 100, renderTarget]}
+        />
 
         <Title name="title" label="PEDRO" position={[0, 2, -10]} color="#fff" />
         <Title layers={[11]} name="title" label="CLICK HERE" position={[0, 2, 24]} scale={[-1, 1, 1]} />

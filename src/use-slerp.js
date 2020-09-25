@@ -6,7 +6,10 @@ function useSlerp() {
   const group = useRef()
   const { viewport } = useThree()
 
-  const [rotationEuler, rotationQuaternion] = useMemo(() => [new THREE.Euler(0, 0, 0), new THREE.Quaternion(0, 0, 0, 0)], [])
+  const [rotationEuler, rotationQuaternion] = useMemo(
+    () => [new THREE.Euler(0, 0, 0), new THREE.Quaternion(0, 0, 0, 0)],
+    []
+  )
 
   useFrame(({ mouse }) => {
     if (!group.current) return

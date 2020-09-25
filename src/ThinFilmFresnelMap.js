@@ -213,8 +213,12 @@ ThinFilmFresnelMap.prototype._updateData = function () {
 
       var cosPhiX = Math.cos(deltaPhase + phi23.x + phi21.x)
       var cosPhiY = Math.cos(deltaPhase + phi23.y + phi21.y)
-      var valX = R_12_star.x + ((2.0 * (R_bi.x * cosPhiX - R_bi_sqr.x)) / (1.0 - 2 * R_bi.x * cosPhiX + R_bi_sqr.x)) * R_star_t_tot.x
-      var valY = R_12_star.y + ((2.0 * (R_bi.y * cosPhiY - R_bi_sqr.y)) / (1.0 - 2 * R_bi.y * cosPhiY + R_bi_sqr.y)) * R_star_t_tot.y
+      var valX =
+        R_12_star.x +
+        ((2.0 * (R_bi.x * cosPhiX - R_bi_sqr.x)) / (1.0 - 2 * R_bi.x * cosPhiX + R_bi_sqr.x)) * R_star_t_tot.x
+      var valY =
+        R_12_star.y +
+        ((2.0 * (R_bi.y * cosPhiY - R_bi_sqr.y)) / (1.0 - 2 * R_bi.y * cosPhiY + R_bi_sqr.y)) * R_star_t_tot.y
       var v = 0.5 * (valX + valY)
 
       var wx = xFit_1931(waveLen)

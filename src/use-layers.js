@@ -1,20 +1,17 @@
 import { useEffect, useRef } from 'react'
 
 function useLayers(layers = [0]) {
+  const ref = useRef()
 
-    const ref = useRef()
+  useEffect(() => {
+    ref.current.layers.disableAll()
 
-    useEffect(() => {
-
-        ref.current.layers.disableAll()
-
-        layers.sort().forEach(layer => {
-            ref.current.layers.enable(layer)
-        })
+    layers.sort().forEach((layer) => {
+      ref.current.layers.enable(layer)
     })
-    
-    return ref
+  })
 
+  return ref
 }
 
 export default useLayers

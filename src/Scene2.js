@@ -15,7 +15,6 @@ const TEXT_PROPS = {
 }
 
 function Title({ material, texture, map, ...props }) {
-  
   return (
     <group {...props}>
       <Text name="text-olga" depthTest={false} position={[0, -1, 0]} {...TEXT_PROPS}>
@@ -48,14 +47,21 @@ function Diamonds(props) {
   return (
     <group name="diamonds" {...props}>
       {diamondsData.mirrors.map((mirror, index) => (
-        <Diamond key={`diamond-${index}`} name={`diamond-${index}`} {...mirror} geometry={nodes.Cylinder.geometry} matcap={matcapTexture} scale={[0.5, 0.5, 0.5]} />
+        <Diamond
+          key={`diamond-${index}`}
+          name={`diamond-${index}`}
+          {...mirror}
+          geometry={nodes.Cylinder.geometry}
+          matcap={matcapTexture}
+          scale={[0.5, 0.5, 0.5]}
+        />
       ))}
     </group>
   )
 }
 
 function Scene() {
-  const [cubeCamera, renderTarget] = useRenderTarget() 
+  const [cubeCamera, renderTarget] = useRenderTarget()
   const thinFilmFresnelMap = useMemo(() => new ThinFilmFresnelMap(410, 0, 5, 1024), [])
 
   const text = useRef()
@@ -72,10 +78,10 @@ function Scene() {
       </Octahedron>
 
       <cubeCamera name="cubeCamera" ref={cubeCamera} args={[0.1, 100, renderTarget]} position={[0, 0, -12]} />
-      
+
       <group name="sceneContainer" ref={group}>
         <Diamonds />
-        
+
         <group ref={text} name="text" position={[0, 0, -5]}>
           <Title name="title" texture={renderTarget.texture} map={thinFilmFresnelMap} />
         </group>

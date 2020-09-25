@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "drei": "1.5.6",
+    "prettier": "^2.1.2",
     "react": "17.0.0-rc.1",
     "react-dom": "17.0.0-rc.1",
     "react-router-dom": "^5.2.0",
@@ -14,17 +15,26 @@
     "three": "0.120.1",
     "use-cannon": "^0.5.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "pretty-quick": "^3.0.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pretty": "prettier --write src"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick"
+    }
+  }
 }

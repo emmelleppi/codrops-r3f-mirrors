@@ -3,7 +3,6 @@ import * as THREE from 'three'
 import { useFrame, useResource } from 'react-three-fiber'
 import { Text, Box, useMatcapTexture, Octahedron, PerspectiveCamera } from 'drei'
 
-
 import useSlerp from './use-slerp'
 import useLayers from './use-layers'
 import useRenderTarget from './use-render-target'
@@ -21,9 +20,9 @@ function Title({ layers, ...props }) {
   useEffect(() => {
     group.current.lookAt(0, 0, 0)
   }, [])
-  
+
   const textRef = useLayers(layers)
-  
+
   return (
     <group {...props} ref={group}>
       <Text ref={textRef} name="text-panna" depthTest={false} material-toneMapped={false} {...TEXT_PROPS}>
@@ -41,7 +40,14 @@ function Mirror({ sideMaterial, reflectionMaterial, args, layers, ...props }) {
     ref.current.rotation.z += 0.01
   })
 
-  return <Box {...props} ref={ref} args={args} material={[sideMaterial, sideMaterial, sideMaterial, sideMaterial, reflectionMaterial, reflectionMaterial]} />
+  return (
+    <Box
+      {...props}
+      ref={ref}
+      args={args}
+      material={[sideMaterial, sideMaterial, sideMaterial, sideMaterial, reflectionMaterial, reflectionMaterial]}
+    />
+  )
 }
 
 function Mirrors({ envMap, layers, ...props }) {
@@ -54,7 +60,14 @@ function Mirrors({ envMap, layers, ...props }) {
       <meshLambertMaterial ref={sideMaterial} map={thinFilmFresnelMap} color={0xaaaaaa} />
       <meshLambertMaterial ref={reflectionMaterial} map={thinFilmFresnelMap} envMap={envMap} />
       {mirrorsData.mirrors.map((mirror, index) => (
-        <Mirror key={`mirror-${index}`} layers={layers} {...mirror} name={`mirror-${index}`} sideMaterial={sideMaterial.current} reflectionMaterial={reflectionMaterial.current} />
+        <Mirror
+          key={`mirror-${index}`}
+          layers={layers}
+          {...mirror}
+          name={`mirror-${index}`}
+          sideMaterial={sideMaterial.current}
+          reflectionMaterial={reflectionMaterial.current}
+        />
       ))}
     </group>
   )
@@ -65,7 +78,7 @@ function TitleCopies({ layers }) {
     const y = new THREE.IcosahedronGeometry(8)
     return y.vertices
   }, [])
-  
+
   return (
     <group name="titleCopies">
       {vertices.map((vertex, i) => (
@@ -76,8 +89,7 @@ function TitleCopies({ layers }) {
 }
 
 function Scene() {
-
-  const [cubeCamera, renderTarget] = useRenderTarget() 
+  const [cubeCamera, renderTarget] = useRenderTarget()
   const group = useSlerp()
 
   const [matcapTexture] = useMatcapTexture('C8D1DC_575B62_818892_6E747B')
@@ -89,7 +101,13 @@ function Scene() {
         <Octahedron layers={[11]} name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
           <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} transparent opacity={0.3} />
         </Octahedron>
-        <cubeCamera layers={[11]} name="cubeCamera" ref={cubeCamera} args={[0.1, 100, renderTarget]} position={[0, 0, 5]} />
+        <cubeCamera
+          layers={[11]}
+          name="cubeCamera"
+          ref={cubeCamera}
+          args={[0.1, 100, renderTarget]}
+          position={[0, 0, 5]}
+        />
         <Title name="title" position={[0, 0, -10]} />
         <TitleCopies layers={[11]} />
         <Mirrors layers={[0, 11]} envMap={renderTarget.texture} />
