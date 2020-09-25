@@ -3,7 +3,7 @@
 A short tutorial on how to create a mirrors scene with the react-three-fiber ecosystem.
 By Marco Ludovico Perego and Gianmarco Simone
 
-![Featured Image](https://raw.githubusercontent.com/emmelleppi/codrops-r3f-mirrors/master/screenshot.jpg?token=AJPLCL3W7TL7OUYZ2VKKL4S7NVAUC)
+![Featured Image](https://github.com/emmelleppi/codrops-r3f-mirrors/blob/master/screenshot.jpg?raw=true)
 
 [Article on Codrops](https://tympanus.net/codrops/?p=)
 
