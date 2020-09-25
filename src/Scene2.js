@@ -3,9 +3,11 @@ import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 import { Text, useMatcapTexture, Octahedron, useGLTFLoader, PerspectiveCamera } from 'drei'
 
+import useSlerp from './use-slerp'
+import useRenderTarget from './use-render-target'
+
 import { ThinFilmFresnelMap } from './ThinFilmFresnelMap'
 import { mirrorsData as diamondsData } from './data'
-import useSlerp from './use-slerp'
 
 const TEXT_PROPS = {
   fontSize: 5,
@@ -53,27 +55,23 @@ function Diamonds(props) {
 }
 
 function Scene() {
-  const renderTarget = useMemo(() => new THREE.WebGLCubeRenderTarget(1024, { format: THREE.RGBAFormat, generateMipmaps: true, minFilter: THREE.LinearFilter }), [])
+  const [cubeCamera, renderTarget] = useRenderTarget() 
   const thinFilmFresnelMap = useMemo(() => new ThinFilmFresnelMap(410, 0, 5, 1024), [])
 
-  const cubeCamera = useRef()
   const text = useRef()
   const group = useSlerp()
 
   const [matcapTexture] = useMatcapTexture('BA5DBA_F2BEF2_E69BE6_DC8CDC')
-
-  useFrame(({ gl, scene }) => {
-    cubeCamera.current.update(gl, scene)
-  })
 
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 2]} fov={70} />
 
       <Octahedron name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
-          <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} />
-        </Octahedron>
-        <cubeCamera name="cubeCamera" ref={cubeCamera} args={[0.1, 100, renderTarget]} position={[0, 0, -12]} />
+        <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} />
+      </Octahedron>
+
+      <cubeCamera name="cubeCamera" ref={cubeCamera} args={[0.1, 100, renderTarget]} position={[0, 0, -12]} />
       
       <group name="sceneContainer" ref={group}>
         <Diamonds />

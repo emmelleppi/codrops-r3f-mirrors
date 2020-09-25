@@ -5,6 +5,7 @@ import { Text, Box, Octahedron, Plane, PerspectiveCamera } from 'drei'
 import { Physics, useBox, usePlane } from 'use-cannon'
 
 import useSlerp from './use-slerp'
+import useRenderTarget from './use-render-target'
 
 const textProps = {
   fontSize: 3.5,
@@ -106,15 +107,10 @@ function Mirrors({ envMap }) {
 }
 
 export default function Scene() {
-  const [renderTarget] = useState(new THREE.WebGLCubeRenderTarget(1024, { format: THREE.RGBAFormat, generateMipmaps: true }))
-
-  const cubeCamera = useRef()
   const group = useSlerp()
-
-  useFrame(({ gl, scene }) => {
-    if (!cubeCamera.current) return
-    cubeCamera.current.update(gl, scene)
-  })
+  const [cubeCamera, renderTarget] = useRenderTarget({
+    minFilter: undefined
+  }) 
 
   return (
     <>

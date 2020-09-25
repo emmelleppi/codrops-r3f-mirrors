@@ -3,10 +3,13 @@ import * as THREE from 'three'
 import { useFrame, useResource } from 'react-three-fiber'
 import { Text, Box, useMatcapTexture, Octahedron, PerspectiveCamera } from 'drei'
 
+
 import useSlerp from './use-slerp'
+import useLayers from './use-layers'
+import useRenderTarget from './use-render-target'
+
 import { ThinFilmFresnelMap } from './ThinFilmFresnelMap'
 import { mirrorsData } from './data'
-import useLayers from './use-layers'
 
 const TEXT_PROPS = {
   fontSize: 3.9,
@@ -73,18 +76,11 @@ function TitleCopies({ layers }) {
 }
 
 function Scene() {
-  const renderTarget = useMemo(() => 
-    new THREE.WebGLCubeRenderTarget(1024, { format: THREE.RGBAFormat, generateMipmaps: true, minFilter: THREE.LinearMipmapLinearFilter })
-  , [])
-  const cubeCamera = useRef()
+
+  const [cubeCamera, renderTarget] = useRenderTarget() 
   const group = useSlerp()
 
   const [matcapTexture] = useMatcapTexture('C8D1DC_575B62_818892_6E747B')
-
-  useFrame(({ gl, scene }) => {
-    if (!cubeCamera.current) return
-    cubeCamera.current.update(gl, scene)
-  })
 
   return (
     <>
