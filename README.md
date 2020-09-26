@@ -1,6 +1,7 @@
 # Creating mirrors in react-three-fiber & threejs
 
 A short tutorial on how to create a mirrors scene with the react-three-fiber ecosystem.
+
 By Marco Ludovico Perego and Gianmarco Simone
 
 ![Featured Image](https://github.com/emmelleppi/codrops-r3f-mirrors/blob/master/screenshot.jpg?raw=true)
