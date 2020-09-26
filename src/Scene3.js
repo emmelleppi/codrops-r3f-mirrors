@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useResource } from 'react-three-fiber'
-import { Text, Box, Octahedron, Plane, PerspectiveCamera } from 'drei'
+import { Text, Box, Octahedron, Plane } from '@react-three/drei'
 import { Physics, useBox, usePlane } from 'use-cannon'
 
 import useSlerp from './use-slerp'
 import useRenderTarget from './use-render-target'
+import useLayers from './use-layers'
 
 const textProps = {
   fontSize: 3.5,
@@ -57,6 +58,11 @@ function PhysicalWalls(props) {
       <shadowMaterial transparent opacity={0.2} />
     </Plane>
   )
+}
+
+function PhysicalTitle(props) {
+  useBox(() => ({ ...props }))
+  return null
 }
 
 function Mirror({ sideMaterial, reflectionMaterial, ...props }) {
@@ -116,22 +122,23 @@ function Mirrors({ envMap }) {
   )
 }
 
+function Background({ layers, ...props }) {
+  const ref = useLayers(layers)
+  return (
+    <Octahedron ref={ref} name="background" args={[100]} {...props}>
+      <meshBasicMaterial color={COLOR} side={THREE.BackSide} />
+    </Octahedron>
+  )
+}
+
 export default function Scene() {
   const group = useSlerp()
   const [cubeCamera, renderTarget] = useRenderTarget()
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 2, 10]} />
-
       <group name="sceneContainer" ref={group}>
-        <Octahedron layers={[11]} name="background" args={[100]} position={[0, 0, -5]}>
-          <meshBasicMaterial color={COLOR} side={THREE.BackSide} />
-        </Octahedron>
-        <Octahedron name="background" args={[100]} position={[0, 0, -5]}>
-          <meshBasicMaterial color={COLOR} side={THREE.BackSide} />
-        </Octahedron>
-
+        <Background layers={[0, 11]} position={[0, 0, -5]} />
         <cubeCamera
           layers={[11]}
           name="cubeCamera"
@@ -147,6 +154,7 @@ export default function Scene() {
         <Physics gravity={[0, -10, 0]}>
           <Mirrors envMap={renderTarget.texture} />
           <PhysicalWalls rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} />
+          <PhysicalTitle args={[13, 2.5, 0.1]} position={[0, 2.25, -10]} />
         </Physics>
       </group>
 

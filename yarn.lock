@@ -1409,6 +1409,24 @@
     "@react-spring/core" "9.0.0-rc.3"
     "@react-spring/shared" "9.0.0-rc.3"
 
+"@react-three/drei@^1.5.7":
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-1.5.7.tgz#0b88e25997b75f53a8dda0a7bc68c27210c9d904"
+  integrity sha512-a/VwnL4YeEPlSAzRR/n5bJCtZNH2nZy0JzaS/p+3B42PHpC4MjGCjjtMQrbaxmfrqtVNkuBp1EYopFHBBqMGXQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@react-spring/web" "^9.0.0-rc.3"
+    detect-gpu "^1.3.0"
+    glsl-noise "^0.0.0"
+    lodash.omit "^4.5.0"
+    lodash.pick "^4.4.0"
+    r3f-troika "^0.31.1"
+    react-merge-refs "^1.0.0"
+    stats.js "^0.17.0"
+    troika-three-text "^0.31.0"
+    utility-types "^3.10.0"
+    zustand "^3.0.3"
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -3690,6 +3708,13 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
+detect-gpu@^1.3.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/detect-gpu/-/detect-gpu-1.4.1.tgz#a30bb1a7ce6a6044d84b4850810f1b248a669372"
+  integrity sha512-joUURxxAwgAvJxj4Y9px6tfcHJlCdBBi/Lg3OmqhfgwihdxzLMTHds+q0LBcu5O1oC/ACQ+OqqDkbUSmd2ilBQ==
+  dependencies:
+    detect-ua "^1.0.1"
+
 detect-newline@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
@@ -3707,6 +3732,11 @@ detect-port-alt@1.1.6:
   dependencies:
     address "^1.0.1"
     debug "^2.6.0"
+
+detect-ua@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/detect-ua/-/detect-ua-1.0.1.tgz#001086a755dbfae509de51e71df580b2090cd704"
+  integrity sha512-FzBaVpuMBcuJkSS/r3bHmnhiAe0SMipQ3SJez/Gmq/ALzoxen1LgfukL556o8rgMUDyLfOXj9MvNnwkqJ35Fwg==
 
 diff-sequences@^24.9.0:
   version "24.9.0"
@@ -3856,23 +3886,6 @@ dotenv@8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-
-drei@1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/drei/-/drei-1.5.6.tgz#b4b9636a7613aca237cf58496cb1581f2c137b56"
-  integrity sha512-e3ZjCmuzWZ8B8vpMzAUjePEK/ENLtkCvKB2tupR2eRmM8/GmNTKC5uX9WIAxl8tbue2juYAOBeSEOhSCtYF1RA==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@react-spring/web" "^9.0.0-rc.3"
-    glsl-noise "^0.0.0"
-    lodash.omit "^4.5.0"
-    lodash.pick "^4.4.0"
-    r3f-troika "^0.31.1"
-    react-merge-refs "^1.0.0"
-    stats.js "^0.17.0"
-    troika-three-text "^0.31.0"
-    utility-types "^3.10.0"
-    zustand "^3.0.3"
 
 duplexer@^0.1.1:
   version "0.1.2"

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useFrame, useResource } from 'react-three-fiber'
-import { Text, Box, useMatcapTexture, Octahedron, PerspectiveCamera } from 'drei'
+import { Text, Box, useMatcapTexture, Octahedron } from '@react-three/drei'
 
 import useSlerp from './use-slerp'
 import useLayers from './use-layers'
@@ -96,7 +96,6 @@ function Scene() {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 2]} fov={70} />
       <group name="sceneContainer" ref={group}>
         <Octahedron layers={[11]} name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
           <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} transparent opacity={0.3} />

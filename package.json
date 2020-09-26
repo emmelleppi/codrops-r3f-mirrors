@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "drei": "1.5.6",
+    "@react-three/drei": "^1.5.7",
     "prettier": "^2.1.2",
     "react": "17.0.0-rc.1",
     "react-dom": "17.0.0-rc.1",
