@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useResource } from 'react-three-fiber'
 import { Text, Box, Octahedron, Plane } from '@react-three/drei'
-import { Physics, useBox, usePlane } from 'use-cannon'
+import { Physics, useBox, usePlane } from '@react-three/cannon'
 
 import useSlerp from './use-slerp'
 import useRenderTarget from './use-render-target'

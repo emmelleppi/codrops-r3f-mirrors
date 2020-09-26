@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@react-three/cannon": "^0.5.3",
     "@react-three/drei": "^1.5.7",
     "prettier": "^2.1.2",
     "react": "17.0.0-rc.1",
@@ -12,8 +13,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-three-fiber": "5.0.0-beta.12",
-    "three": "0.120.1",
-    "use-cannon": "^0.5.2"
+    "three": "0.120.1"
   },
   "devDependencies": {
     "husky": "^4.3.0",
