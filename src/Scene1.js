@@ -25,7 +25,7 @@ function Title({ layers, ...props }) {
 
   return (
     <group {...props} ref={group}>
-      <Text ref={textRef} name="text-panna" depthTest={false} material-toneMapped={false} {...TEXT_PROPS}>
+      <Text ref={textRef} name="text-panna" depthTest={false} material-toneMapped={false} material-color="#FFFFFF" {...TEXT_PROPS}>
         PANNA
       </Text>
     </group>
@@ -57,8 +57,8 @@ function Mirrors({ envMap, layers, ...props }) {
 
   return (
     <group name="mirrors" {...props}>
-      <meshLambertMaterial ref={sideMaterial} map={thinFilmFresnelMap} color={0xaaaaaa} />
-      <meshLambertMaterial ref={reflectionMaterial} map={thinFilmFresnelMap} envMap={envMap} />
+      <meshLambertMaterial ref={sideMaterial} map={thinFilmFresnelMap} color="#AAAAAA" />
+      <meshLambertMaterial ref={reflectionMaterial} map={thinFilmFresnelMap} envMap={envMap} color="#FFFFFF" />
       {mirrorsData.mirrors.map((mirror, index) => (
         <Mirror
           key={`mirror-${index}`}
@@ -98,7 +98,7 @@ function Scene() {
     <>
       <group name="sceneContainer" ref={group}>
         <Octahedron layers={[11]} name="background" args={[20, 4, 4]} position={[0, 0, -5]}>
-          <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} transparent opacity={0.3} />
+          <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} transparent opacity={0.3} color="#FFFFFF" />
         </Octahedron>
         <cubeCamera
           layers={[11]}

@@ -21,7 +21,7 @@ function Title({ material, texture, map, layers, ...props }) {
     <group {...props}>
       <Text ref={textRef} name="text-olga" depthTest={false} position={[0, -1, 0]} {...TEXT_PROPS}>
         OLGA
-        <meshPhysicalMaterial envMap={texture} map={map} roughness={0} metalness={1} />
+        <meshPhysicalMaterial envMap={texture} map={map} roughness={0} metalness={1} color="#FFFFFF" />
       </Text>
     </group>
   )
@@ -37,7 +37,7 @@ function Diamond({ map, texture, matcap, layers, ...props }) {
 
   return (
     <mesh ref={ref} {...props}>
-      <meshMatcapMaterial matcap={matcap} transparent opacity={0.9} color="#14ceff" />
+      <meshMatcapMaterial matcap={matcap} transparent opacity={0.9} color="#14CEFF" />
     </mesh>
   )
 }
@@ -69,7 +69,7 @@ function Background({ layers, ...props }) {
 
   return (
     <Octahedron ref={ref} name="background" args={[20, 4, 4]} {...props}>
-      <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} />
+      <meshMatcapMaterial matcap={matcapTexture} side={THREE.BackSide} color="#FFFFFF" />
     </Octahedron>
   )
 }

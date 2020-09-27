@@ -13,7 +13,7 @@ const textProps = {
   font: 'http://fonts.gstatic.com/s/ericaone/v11/WBLnrEXccV9VGrOKmGDFXEXL.woff'
 }
 
-const COLOR = '#f51d63'
+const COLOR = '#F51D63'
 
 function Title({ layers, label = '', color, ...props }) {
   const group = useRef()
@@ -106,7 +106,7 @@ function Mirrors({ envMap }) {
   return (
     <>
       <meshPhysicalMaterial ref={sideMaterial} color="#000000" envMap={envMap} roughness={0.8} metalness={0.2} />
-      <meshPhysicalMaterial ref={reflectionMaterial} envMap={envMap} roughness={0} metalness={1} />
+      <meshPhysicalMaterial ref={reflectionMaterial} envMap={envMap} roughness={0} metalness={1} color="#FFFFFF" />
       <group name="mirrors">
         {mirrorsData.map((mirror, index) => (
           <Mirror
