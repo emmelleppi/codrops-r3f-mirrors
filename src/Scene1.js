@@ -11,7 +11,7 @@ import { ThinFilmFresnelMap } from './ThinFilmFresnelMap'
 import { mirrorsData } from './data'
 
 const TEXT_PROPS = {
-  fontSize: 3.5,
+  fontSize: 2.5,
   font: 'http://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff'
 }
 
@@ -36,8 +36,10 @@ function Mirror({ sideMaterial, reflectionMaterial, args, layers, ...props }) {
   const ref = useLayers(layers)
 
   useFrame(() => {
-    ref.current.rotation.y += 0.001
-    ref.current.rotation.z += 0.01
+    if (ref.current) {
+      ref.current.rotation.y += 0.001
+      ref.current.rotation.z += 0.01
+    }
   })
 
   return (
@@ -75,7 +77,7 @@ function Mirrors({ envMap, layers, ...props }) {
 
 function TitleCopies({ layers }) {
   const vertices = useMemo(() => {
-    const y = new THREE.IcosahedronGeometry(8)
+    const y = new THREE.IcosahedronGeometry(10)
     return y.vertices
   }, [])
 
