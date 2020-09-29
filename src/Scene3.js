@@ -13,9 +13,13 @@ const textProps = {
   font: 'http://fonts.gstatic.com/s/ericaone/v11/WBLnrEXccV9VGrOKmGDFXEXL.woff'
 }
 
-const COLOR = '#F51D63'
+const BG_COLOR = '#F51D63'
+const PEDRO_COLOR = "#FFFFFF"
+const CLICKHERE_COLOR = "#FFFFFF"
+const REFLECTION_SIDE_COLOR = "#FFFFFF"
+const DARK_SIDE_COLOR = "#222222"
 
-function Title({ layers, label = '', color, ...props }) {
+function Title({ layers, label = '', color = 0xffffff, ...props }) {
   const group = useRef()
 
   useEffect(() => {
@@ -26,13 +30,13 @@ function Title({ layers, label = '', color, ...props }) {
     <group {...props} ref={group}>
       <Text castShadow name={label} depthTest={false} material-toneMapped={false} {...textProps} layers={layers}>
         {label}
-        {color && <meshStandardMaterial color={color} />}
+        <meshBasicMaterial color={color} />
       </Text>
     </group>
   )
 }
 
-function TitleCopies({ layers, label, ...props }) {
+function TitleCopies({ layers, label, color, ...props }) {
   const vertices = useMemo(() => {
     const y = new THREE.CircleGeometry(10, 4, 4)
     return y.vertices
@@ -41,7 +45,7 @@ function TitleCopies({ layers, label, ...props }) {
   return (
     <group name="titleCopies" {...props}>
       {vertices.map((vertex, i) => (
-        <Title name={'titleCopy-' + i} label={label} position={vertex} layers={layers} />
+        <Title name={'titleCopy-' + i} label={label} position={vertex} layers={layers} color={color} />
       ))}
     </group>
   )
@@ -105,8 +109,8 @@ function Mirrors({ envMap }) {
 
   return (
     <>
-      <meshPhysicalMaterial ref={sideMaterial} color="#000000" envMap={envMap} roughness={0.8} metalness={0.2} />
-      <meshPhysicalMaterial ref={reflectionMaterial} envMap={envMap} roughness={0} metalness={1} color="#FFFFFF" />
+      <meshPhysicalMaterial ref={sideMaterial} color={DARK_SIDE_COLOR} envMap={envMap} roughness={0.8} metalness={0.2} />
+      <meshPhysicalMaterial ref={reflectionMaterial} envMap={envMap} roughness={0} metalness={1} color={REFLECTION_SIDE_COLOR} />
       <group name="mirrors">
         {mirrorsData.map((mirror, index) => (
           <Mirror
@@ -126,7 +130,7 @@ function Background({ layers, ...props }) {
   const ref = useLayers(layers)
   return (
     <Octahedron ref={ref} name="background" args={[100]} {...props}>
-      <meshBasicMaterial color={COLOR} side={THREE.BackSide} />
+      <meshBasicMaterial color={BG_COLOR} side={THREE.BackSide} />
     </Octahedron>
   )
 }
@@ -147,9 +151,10 @@ export default function Scene() {
           args={[0.1, 100, renderTarget]}
         />
 
-        <Title name="title" label="PEDRO" position={[0, 2, -10]} color="#fff" />
-        <Title layers={[11]} name="title" label="CLICK HERE" position={[0, 2, 24]} scale={[-1, 1, 1]} />
-        <TitleCopies position={[0, 2, -5]} rotation={[0, 0, 0]} layers={[11]} label="PEDRO" />
+        <Title name="title" label="PEDRO" position={[0, 2, -10]} color={PEDRO_COLOR} />
+        <TitleCopies position={[0, 2, -5]} rotation={[0, 0, 0]} layers={[11]} label="PEDRO"  color={PEDRO_COLOR} />
+
+        <Title layers={[11]} name="title" label="CLICK HERE" position={[0, 2, 24]} scale={[-1, 1, 1]} color={CLICKHERE_COLOR} />
 
         <Physics gravity={[0, -10, 0]}>
           <Mirrors envMap={renderTarget.texture} />
