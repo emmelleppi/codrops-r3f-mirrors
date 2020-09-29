@@ -9,15 +9,15 @@ import useRenderTarget from './use-render-target'
 import useLayers from './use-layers'
 
 const textProps = {
-  fontSize: 3.5,
-  font: 'http://fonts.gstatic.com/s/ericaone/v11/WBLnrEXccV9VGrOKmGDFXEXL.woff'
+  fontSize: 4,
+  font: 'http://fonts.gstatic.com/s/kanit/v7/nKKU-Go6G5tXcr4WPBWnVac.woff'
 }
 
-const BG_COLOR = '#F51D63'
-const PEDRO_COLOR = "#FFFFFF"
-const CLICKHERE_COLOR = "#FFFFFF"
-const REFLECTION_SIDE_COLOR = "#FFFFFF"
-const DARK_SIDE_COLOR = "#222222"
+const BG_COLOR = '#921212'
+const PEDRO_COLOR = "#aaa"
+const CLICKHERE_COLOR = "#f70131"
+const REFLECTION_SIDE_COLOR = "#929292"
+const DARK_SIDE_COLOR = "#921212"
 
 function Title({ layers, label = '', color = 0xffffff, ...props }) {
   const group = useRef()

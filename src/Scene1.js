@@ -11,8 +11,8 @@ import { ThinFilmFresnelMap } from './ThinFilmFresnelMap'
 import { mirrorsData } from './data'
 
 const TEXT_PROPS = {
-  fontSize: 3.9,
-  font: 'http://fonts.gstatic.com/s/modak/v5/EJRYQgs1XtIEskMA-hI.woff'
+  fontSize: 3.5,
+  font: 'http://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff'
 }
 
 function Title({ layers, ...props }) {

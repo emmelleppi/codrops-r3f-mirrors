@@ -10,8 +10,8 @@ import { mirrorsData as diamondsData } from './data'
 import useLayers from './use-layers'
 
 const TEXT_PROPS = {
-  fontSize: 5,
-  font: 'http://fonts.gstatic.com/s/monoton/v10/5h1aiZUrOngCibe4TkHLRA.woff'
+  fontSize: 3,
+  font: 'http://fonts.gstatic.com/s/stalinistone/v26/MQpS-WezM9W4Dd7D3B7I-UT7SZieOA.woff'
 }
 
 function Title({ material, texture, map, layers, ...props }) {
@@ -21,7 +21,7 @@ function Title({ material, texture, map, layers, ...props }) {
     <group {...props}>
       <Text ref={textRef} name="text-olga" depthTest={false} position={[0, -1, 0]} {...TEXT_PROPS}>
         OLGA
-        <meshPhysicalMaterial envMap={texture} map={map} roughness={0} metalness={1} color="#FFFFFF" />
+        <meshPhysicalMaterial envMap={texture} map={map} roughness={0} metalness={0} color="#0050f0" />
       </Text>
     </group>
   )
@@ -43,7 +43,7 @@ function Diamond({ map, texture, matcap, layers, ...props }) {
 }
 
 function Diamonds({ layers, ...props }) {
-  const [matcapTexture] = useMatcapTexture('2E763A_78A0B7_B3D1CF_14F209')
+  const [matcapTexture] = useMatcapTexture('17395A_7EBCC7_4D8B9F_65A1B5')
   const { nodes } = useGLTFLoader('/diamond.glb')
 
   return (
@@ -65,7 +65,7 @@ function Diamonds({ layers, ...props }) {
 
 function Background({ layers, ...props }) {
   const ref = useLayers(layers)
-  const [matcapTexture] = useMatcapTexture('BA5DBA_F2BEF2_E69BE6_DC8CDC')
+  const [matcapTexture] = useMatcapTexture('686B73_2A2B2D_D5D9DD_B0B3BC')
 
   return (
     <Octahedron ref={ref} name="background" args={[20, 4, 4]} {...props}>

@@ -42,8 +42,8 @@ function Body() {
             <p className="frame__tagline">A react-three-fiber based demo</p>
           </div>
           <div className="frame__links">
-            <a href="#">Previous demo</a>
-            <a href="#">Article</a>
+            <a href="https://tympanus.net/Development/MenuFullGrid/">Previous demo</a>
+            <a href="https://tympanus.net/codrops/?p=51167">Article</a>
             <a href="https://github.com/emmelleppi/codrops-r3f-mirrors">GitHub</a>
           </div>
           <div className="frame__demos">

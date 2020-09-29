@@ -6,9 +6,9 @@ By Marco Ludovico Perego and Gianmarco Simone
 
 ![Featured Image](https://github.com/emmelleppi/codrops-r3f-mirrors/blob/master/screenshot.jpg?raw=true)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=)
+[Article on Codrops](https://tympanus.net/codrops/?p=51167)
 
-[Demo](http://tympanus.net/Development/.../)
+[Demo](http://tympanus.net/Tutorials/Mirrors/)
 
 ## Installation
 
