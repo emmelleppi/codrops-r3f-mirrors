@@ -10,7 +10,7 @@ import useLayers from './use-layers'
 
 const textProps = {
   fontSize: 4,
-  font: 'http://fonts.gstatic.com/s/kanit/v7/nKKU-Go6G5tXcr4WPBWnVac.woff'
+  font: 'https://fonts.gstatic.com/s/kanit/v7/nKKU-Go6G5tXcr4WPBWnVac.woff'
 }
 
 const BG_COLOR = '#921212'

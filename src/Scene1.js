@@ -12,7 +12,7 @@ import { mirrorsData } from './data'
 
 const TEXT_PROPS = {
   fontSize: 2.5,
-  font: 'http://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff'
+  font: 'https://fonts.gstatic.com/s/syncopate/v12/pe0pMIuPIYBCpEV5eFdKvtKqBP5p.woff'
 }
 
 function Title({ layers, ...props }) {

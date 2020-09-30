@@ -11,7 +11,7 @@ import useLayers from './use-layers'
 
 const TEXT_PROPS = {
   fontSize: 5,
-  font: 'http://fonts.gstatic.com/s/monoton/v10/5h1aiZUrOngCibe4TkHLRA.woff'
+  font: 'https://fonts.gstatic.com/s/monoton/v10/5h1aiZUrOngCibe4TkHLRA.woff'
 }
 
 function Title({ material, texture, map, layers, ...props }) {
